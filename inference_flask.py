@@ -9,6 +9,7 @@ from pymongo import MongoClient
 import gridfs
 import base64
 from bson import ObjectId
+import openai
 
 ######################################## MACHINE LEARNING MODULE ########################################
 # Paths
