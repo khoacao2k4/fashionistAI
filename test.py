@@ -17,7 +17,6 @@ def test_predict(image_path):
         response = requests.post(url, files=files)
         print(f"Testing /predict with {image_path}...")
         print(f"Status Code: {response.status_code}")
-        print(f"Response: {response.json()}")
         return response.json() if response.status_code == 200 else None
 
 def test_get_all():
@@ -59,6 +58,18 @@ def test_delete_image(record_id):
     payload = {"id": record_id}
     response = requests.delete(url, json=payload)
     print(f"Testing /delete_image for record_id: {record_id}...")
+    print(f"Status Code: {response.status_code}")
+    print(f"Response: {response.json()}")
+    return response.status_code == 200
+
+def recommend_clothes(clothes, occasion, n=5):
+    """
+    Test the /recommend API for a single set of clothes and an occasion.
+    """
+    url = f"{BASE_URL}/recommend"
+    payload = {"clothes": clothes, "occasion": occasion, "n": n}
+    response = requests.post(url, json=payload)
+    print(f"Testing /recommend for clothes: {clothes} and occasion: {occasion}...")
     print(f"Status Code: {response.status_code}")
     print(f"Response: {response.json()}")
     return response.status_code == 200
