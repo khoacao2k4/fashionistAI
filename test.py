@@ -4,19 +4,20 @@ import json
 # Base URL for the Flask API
 BASE_URL = "http://127.0.0.1:5000"
 
-# Test image file path
-TEST_IMAGE_PATH = "test/1.jpg"
+# Test image file paths
+TEST_IMAGES = ["test/1.jpg", "test/2.jpg"]
 
-def test_predict():
+def test_predict(image_path):
     """
-    Test the /predict API.
+    Test the /predict API for a single image.
     """
     url = f"{BASE_URL}/predict"
-    with open(TEST_IMAGE_PATH, "rb") as img_file:
+    with open(image_path, "rb") as img_file:
         files = {"file": img_file}
         response = requests.post(url, files=files)
-        print(f"Testing /predict...")
+        print(f"Testing /predict with {image_path}...")
         print(f"Status Code: {response.status_code}")
+        print(f"Response: {response.json()}")
         return response.json() if response.status_code == 200 else None
 
 def test_get_all():
@@ -27,70 +28,73 @@ def test_get_all():
     response = requests.get(url)
     print(f"Testing /get_all...")
     print(f"Status Code: {response.status_code}")
+    print(f"Response: {json.dumps(response.json(), indent=4)}")
     return response.json() if response.status_code == 200 else None
 
-def test_update_metadata(image_id):
+def test_update_metadata(record_id):
     """
-    Test the /update_metadata API.
+    Test the /update_metadata API for a single record.
     """
     url = f"{BASE_URL}/update_metadata"
     payload = {
-        "image_id": image_id,
+        "id": record_id,
         "subCategory": "Updated Category",
-        "articleType": "Updated Type",
+        "article": "Updated Article",
         "gender": "Updated Gender",
-        "baseColour": "Updated Colour",
+        "color": "Updated Color",
         "season": "Updated Season",
         "usage": "Updated Usage"
     }
     response = requests.put(url, json=payload)
-    print(f"Testing /update_metadata...")
+    print(f"Testing /update_metadata for record_id: {record_id}...")
     print(f"Status Code: {response.status_code}")
+    print(f"Response: {response.json()}")
     return response.status_code == 200
 
-def test_delete_image(image_id):
+def test_delete_image(record_id):
     """
-    Test the /delete_image API.
+    Test the /delete_image API for a single record.
     """
     url = f"{BASE_URL}/delete_image"
-    payload = {
-        "image_id": image_id
-    }
+    payload = {"id": record_id}
     response = requests.delete(url, json=payload)
-    print(f"Testing /delete_image...")
+    print(f"Testing /delete_image for record_id: {record_id}...")
     print(f"Status Code: {response.status_code}")
+    print(f"Response: {response.json()}")
     return response.status_code == 200
 
 if __name__ == "__main__":
     print("Starting API Tests...\n")
 
-    # Test /predict API
-    predict_response = test_predict()
-    if not predict_response:
-        print("Skipping further tests as /predict failed.")
-        exit(1)
+    # 1. Test /predict for multiple images
+    print("Step 1: Testing /predict for multiple images...")
+    for image_path in TEST_IMAGES:
+        test_predict(image_path)
+    print("Step 1 Completed.\n")
 
-    # Test /get_all API
+    # 2. Test /get_all to retrieve all records
+    print("Step 2: Testing /get_all to fetch all records...")
     all_records = test_get_all()
     if not all_records or len(all_records) == 0:
-        print("No records found in /get_all. Skipping further tests.")
+        print("No records found. Exiting tests.")
         exit(1)
+    print("Step 2 Completed.\n")
 
-    # Get the image_id of the first record
-    image_id = all_records[0].get("image_id")
-    print(f"Using image_id for update and delete: {image_id}")
-    if not image_id:
-        print("No image_id found in the records. Skipping further tests.")
-        exit(1)
-
-    # Test /update_metadata API
-    if not test_update_metadata(image_id):
-        print("Update metadata test failed. Continuing with delete test...")
-
-    # Test /delete_image API
-    if not test_delete_image(image_id):
-        print("Delete image test failed.")
+    # 3. Test /update_metadata for the first record
+    print("Step 3: Testing /update_metadata for the first record...")
+    first_record_id = all_records[0].get("id")
+    if first_record_id:
+        test_update_metadata(first_record_id)
     else:
-        print("Delete image test succeeded.")
+        print("No record ID found for the first record. Skipping update test.")
+    print("Step 3 Completed.\n")
 
-    print("\nAPI Tests Completed.")
+    # 4. Test /delete_image for all records
+    print("Step 4: Testing /delete_image for all records...")
+    for record in all_records:
+        record_id = record.get("id")
+        if record_id:
+            test_delete_image(record_id)
+    print("Step 4 Completed.\n")
+
+    print("All API Tests Completed.")
