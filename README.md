@@ -1,5 +1,7 @@
 # FashionistAI
 
+![FashionistAI Logo](https://via.placeholder.com/300x100?text=FashionistAI+Logo)
+
 FashionistAI is your personal fashion assistant designed to help you decide what to wear for any occasion. Whether it's an interview, a game day party, or a casual outing, FashionistAI uses the power of AI to provide style recommendations tailored to your wardrobe and the context you select.
 
 ---
