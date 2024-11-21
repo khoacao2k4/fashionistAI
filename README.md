@@ -1,122 +1,131 @@
-###FashionistAI
+# FashionistAI
 
 FashionistAI is your personal fashion assistant designed to help you decide what to wear for any occasion. Whether it's an interview, a game day party, or a casual outing, FashionistAI uses the power of AI to provide style recommendations tailored to your wardrobe and the context you select.
 
-###Key Features
+---
 
-#1. Add New Item
+## Key Features
 
-Snap a photo of your clothing item and upload it to your virtual wardrobe.
+### 1. **Add New Item**
 
-Automatically classify items using a machine learning model based on:
+- Snap a photo of your clothing item and upload it to your virtual wardrobe.
+- Automatically classify items using a machine learning model based on:
+  - Category (e.g., shirts, pants, dresses)
+  - Season (e.g., summer, winter, all-season)
+- Build and grow your wardrobe effortlessly.
 
-Category (e.g., shirts, pants, dresses)
+### 2. **My Wardrobe**
 
-Season (e.g., summer, winter, all-season)
+- View and manage your clothing collection.
+- Organize items by category, season, or personal tags.
+- Access your wardrobe anytime, anywhere.
 
-Build and grow your wardrobe effortlessly.
+### 3. **Style Recommendations**
 
-#2. My Wardrobe
+- Choose a context such as:
+  - Formal
+  - Casual
+  - Party
+- Get personalized clothing suggestions from an AI model powered by GPT to match your selected occasion.
+- Simplify your decision-making process with confidence and style.
 
-View and manage your clothing collection.
+---
 
-Organize items by category, season, or personal tags.
+## Tech Stack
 
-Access your wardrobe anytime, anywhere.
+### Backend
 
-#3. Style Recommendations
+- **Flask**: Powers the API for managing wardrobe data and interfacing with the AI model.
+- **MongoDB**: Stores user data, including wardrobe items and metadata.
 
-Choose a context such as:
+### Machine Learning
 
-Formal
+- **Kaggle**: Trains the machine learning model for clothing classification.
+- **OpenAI API**: Provides GPT-based recommendations for style contexts.
 
-Casual
+### Frontend
 
-Party
+- **React Native**: Delivers a cross-platform mobile app experience, allowing users to access their wardrobe and receive recommendations on the go.
 
-Get personalized clothing suggestions from an AI model powered by GPT to match your selected occasion.
+---
 
-Simplify your decision-making process with confidence and style.
+## Getting Started
 
-###Tech Stack
+### Prerequisites
 
-#Backend
+- Install [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/).
+- Install [Python](https://www.python.org/) and [pip](https://pip.pypa.io/).
+- Set up a MongoDB instance (local or cloud).
+- Obtain an API key from OpenAI.
 
-Flask: Powers the API for managing wardrobe data and interfacing with the AI model.
+### Installation
 
-MongoDB: Stores user data, including wardrobe items and metadata.
+1. Clone the repository:
 
-#Machine Learning
+   ```bash
+   git clone https://github.com/yourusername/FashionistAI.git
+   ```
 
-Kaggle: Trains the machine learning model for clothing classification.
+2. Navigate to the project directory:
 
-OpenAI API: Provides GPT-based recommendations for style contexts.
+   ```bash
+   cd FashionistAI
+   ```
 
-#Frontend
+3. Install backend dependencies:
 
-React Native: Delivers a cross-platform mobile app experience, allowing users to access their wardrobe and receive recommendations on the go.
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-###Getting Started
+4. Install frontend dependencies:
 
-#Prerequisites
+   ```bash
+   cd frontend
+   npm install
+   ```
 
-Install Node.js and npm.
+5. Configure environment variables:
 
-Install Python and pip.
+   - Create a `.env` file in the backend directory with:
+     ```env
+     MONGO_URI=your_mongodb_connection_string
+     DB_NAME=your_db_name
+     OPENAI_API_KEY=your_openai_api_key
+     ```
 
-Set up a MongoDB instance (local or cloud).
+### Running the Application
 
-Obtain an API key from OpenAI.
+#### Backend
 
-#Installation
+1. Start the Flask server:
+   ```bash
+   python app.py
+   ```
 
-Clone the repository:
+#### Frontend
 
-git clone https://github.com/yourusername/FashionistAI.git
+2. Start the React Native app:
 
-Navigate to the project directory:
+   ```bash
+   npm start
+   ```
 
-cd FashionistAI
+3. Follow the instructions to launch the app on an emulator or a physical device.
 
-Install backend dependencies:
+---
 
-pip install -r requirements.txt
+## License
 
-Install frontend dependencies:
+This project is licensed under the [MIT License](LICENSE).
 
-cd frontend
-npm install
+---
 
-Configure environment variables:
+## Contact
 
-Create a .env file in the backend directory with:
+For questions or feedback, please reach out to [cqnhatkhoa@gmail.com](mailto\:cqnhatkhoa@gmail.com).
 
-MONGO_URI=your_mongodb_connection_string
-OPENAI_API_KEY=your_openai_api_key
-
-#Running the Application
-
-Backend
-
-Start the Flask server:
-
-python app.py
-
-Frontend
-
-Start the React Native app:
-
-npm start
-
-Follow the instructions to launch the app on an emulator or a physical device.
-
-License
-
-This project is licensed under the MIT License.
-
-Contact
-
-For questions or feedback, please reach out to your_email@example.com.
+---
 
 FashionistAI - Empowering your style, one outfit at a time!
 
