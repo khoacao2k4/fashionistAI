@@ -32,6 +32,7 @@ FashionistAI is your personal fashion assistant designed to help you decide what
   - Formal
   - Casual
   - Party
+  - ...
 - Get personalized clothing suggestions from an AI model powered by GPT to match your selected occasion.
 - Simplify your decision-making process with confidence and style.
 
@@ -69,7 +70,7 @@ FashionistAI is your personal fashion assistant designed to help you decide what
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/FashionistAI.git
+   https://github.com/khoacao2k4/fashionistAI.git
    ```
 
 2. Navigate to the project directory:
