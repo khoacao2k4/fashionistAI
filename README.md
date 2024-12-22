@@ -130,7 +130,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 
-For questions or feedback, please reach out to [cqnhatkhoa@gmail.com](mailto\:cqnhatkhoa@gmail.com).
+For questions or feedback, please reach out to [cqnhatkhoa@gmail.com](mailto\:cqnhatkhoa@gmail.com) or [sohamvazirani@gmail.com](mailto:sohamvazirani@gmail.com).
 
 ---
 
